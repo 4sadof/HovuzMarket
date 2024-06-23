@@ -1,0 +1,88 @@
+﻿@model HomeVM
+@{
+    ViewData["Title"] = "Home page";
+    int counter = 0;
+}
+
+
+<!-- furniture section -->
+
+<section class="furniture_section layout_padding">
+    <div class="container">
+        <div class="heading_container">
+            <h2>
+                Məhsullarımız
+            </h2>
+            <p>
+                İşinizə yarayacaq məhsullara burdan da ulaşa bilərsiniz.
+            </p>
+        </div>
+        <div class="row">
+            @foreach (Furniture furniture in Model.Furnitures)
+            {
+                <div class="col-md-6 col-lg-4">
+                    <div class="box">
+                        <div class="img-box">
+                            <img src="~/uploads/furnitures/@furniture.Image" alt="">
+                        </div>
+                        <div class="detail-box">
+                            <h5>
+                                @furniture.Name
+                            </h5>
+                            <div class="price_box">
+                                <h6 class="price_heading">
+                                    <span>$</span> @furniture.Price
+                                </h6>
+                                <a href="">
+                                    İndi Al
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- end furniture section -->
+<!-- about section -->
+
+<section class="about_section layout_padding long_section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="img-box">
+                    <img src="~/front/images/about-img.png" alt="">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="detail-box">
+                    <div class="heading_container">
+                        <h2>
+                            Haqqımızda
+                        </h2>
+                    </div>
+                    <p>
+                 Mağazamız 2020ci ildən bugünə qədər hər zaman müştəriyə tam xidmət vermiş və müştəri razılığını hər zaman qazanmışdır. Siz də bizi tərcih edib bizdən razı qalmağa və işinizi təmiz görməyə tələsin.
+                    </p>
+                    <a href="">
+                        Daha Çox
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- end about section -->
+
+<!-- client section -->
+
+
+@await Html.PartialAsync("_ContactPartial",Model.Message)
+
+<!-- end client section -->
+@section Slider{
+    @await Html.PartialAsync("_SliderPartial")
+}
